@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+class Result {
+
+    public static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
+        int alice = 0;
+        int bob = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (a.get(i) > b.get(i)) {
+                alice++;
+            } else if (a.get(i) < b.get(i)) {
+                bob++;
+            }
+        }
+
+        return Arrays.asList(alice, bob);
+    }
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader =
+            new BufferedReader(new InputStreamReader(System.in));
+
+        List<Integer> a = new ArrayList<>();
+        List<Integer> b = new ArrayList<>();
+
+        String[] aInput = bufferedReader.readLine().split(" ");
+        String[] bInput = bufferedReader.readLine().split(" ");
+
+        for (String value : aInput) {
+            a.add(Integer.parseInt(value));
+        }
+
+        for (String value : bInput) {
+            b.add(Integer.parseInt(value));
+        }
+
+        List<Integer> result = Result.compareTriplets(a, b);
+
+        System.out.println(result.get(0) + " " + result.get(1));
+
+        bufferedReader.close();
+    }
+}
